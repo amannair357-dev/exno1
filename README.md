@@ -116,6 +116,15 @@ outliers_z
 df2_z_cleaned = df2_z[z_scores <= threshold]
 df2_z_cleaned
 
+# Output
+
+<img width="788" height="714" alt="Screenshot 2026-02-06 112155" src="https://github.com/user-attachments/assets/c25b916a-4eb5-4ef2-9780-ef585fed9160" />
+<img width="386" height="228" alt="Screenshot 2026-02-06 112205" src="https://github.com/user-attachments/assets/78f5fbb4-6e05-4d15-9ab4-df40117b1440" />
+<img width="1029" height="387" alt="Screenshot 2026-02-06 112221" src="https://github.com/user-attachments/assets/b4296922-722e-49fa-b797-e4279db2e032" />
+<img width="1031" height="803" alt="Screenshot 2026-02-06 112304" src="https://github.com/user-attachments/assets/cd4bd119-0d28-4f96-8bc7-866f4312844b" />
+<img width="563" height="823" alt="Screenshot 2026-02-06 112325" src="https://github.com/user-attachments/assets/899d73d9-d393-46be-9386-b21334888e17" />
+<img width="433" height="811" alt="Screenshot 2026-02-06 112342" src="https://github.com/user-attachments/assets/2b4cf545-e927-40b1-acce-12d70a270c04" />
+
 # Result
 
  Thus , the data cleaning process is completed successfully.
