@@ -22,64 +22,100 @@ STEP 6: Use zscore of to remove outliers
 
 # Coding
 
-Step 1: Import Required Libraries
-import pandas as pd import numpy as np from scipy import stats import seaborn as sns import matplotlib.pyplot as plt
+### Step 1: Import Required Libraries
+import pandas as pd
+import numpy as np
+from scipy import stats
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-Step 2: Read the Dataset
-df2 = pd.read_csv('Data_set.csv') df2.head()
+### Step 2: Read the Dataset
+df2 = pd.read_csv('Data_set.csv')
+df2.head()
 
-Step 3: Dataset Information
-df2.info() df2.describe()
+### Step 3: Dataset Information
+df2.info()
+df2.describe()
 
-Step 4: Handling Missing Values
-Check Null Values
-df2.isnull() df2.isnull().sum()
+### Step 4: Handling Missing Values
+### Check Null Values
+df2.isnull()
+df2.isnull().sum()
 
-Fill Missing Values with 0
-df2_fill_0 = df2.fillna(0) df2_fill_0
+### Fill Missing Values with 0
+df2_fill_0 = df2.fillna(0)
+df2_fill_0
 
-Forward Fill
-df2_ffill = df2.ffill() df2_ffill
+### Forward Fill
+df2_ffill = df2.ffill()
+df2_ffill
 
-Backward Fill
-df2_bfill = df2.bfill() df2_bfill
+### Backward Fill
+df2_bfill = df2.bfill()
+df2_bfill
 
-Fill with Mean (Numerical Column Example)
-df2['watchers'] = df2['watchers'].fillna(df2['watchers'].mean()) df2
+### Fill with Mean (Numerical Column Example)
+df2['watchers'] = df2['watchers'].fillna(df2['watchers'].mean())
+df2
 
-Drop Missing Values
-df2_dropna = df2.dropna() df2_dropna
+### Drop Missing Values
+df2_dropna = df2.dropna()
+df2_dropna
 
-Step 5: Save Cleaned Data
+### Step 5: Save Cleaned Data
 df2_dropna.to_csv('clean_data_2.csv', index=False)
 
-OUTLIER DETECTION
-Step 6: IQR Method (Using Iris Dataset)
-ir = pd.read_csv('Data_set.csv') ir.head() ir.info() ir.describe()
+### OUTLIER DETECTION
+### Step 6: IQR Method (Using Iris Dataset)
+ir = pd.read_csv('Data_set.csv')
+ir.head()
+ir.info()
+ir.describe()  
 
-Boxplot for Outlier Detection
-sns.boxplot(x=ir['watchers']) plt.show()
+### Boxplot for Outlier Detection
+sns.boxplot(x=ir['watchers'])
+plt.show()
 
-Calculate IQR
-Q1 = ir['watchers'].quantile(0.25) Q3 = ir['watchers'].quantile(0.75) IQR = Q3 - Q1 print("IQR:", IQR)
+### Calculate IQR
+Q1 = ir['watchers'].quantile(0.25)
+Q3 = ir['watchers'].quantile(0.75)
+IQR = Q3 - Q1
+print("IQR:", IQR)
 
-Detect Outliers
-outliers_iqr = ir[ (ir['watchers'] < (Q1 - 1.5 * IQR)) | (ir['watchers'] > (Q3 + 1.5 * IQR)) ] outliers_iqr
+### Detect Outliers
+outliers_iqr = ir[
+    (ir['watchers'] < (Q1 - 1.5 * IQR)) |
+    (ir['watchers'] > (Q3 + 1.5 * IQR))
+]
+outliers_iqr
 
-Remove Outliers
-ir_cleaned = ir[ ~((ir['watchers'] < (Q1 - 1.5 * IQR)) | (ir['watchers'] > (Q3 + 1.5 * IQR))) ] ir_cleaned
+### Remove Outliers
+ir_cleaned = ir[
+    ~((ir['watchers'] < (Q1 - 1.5 * IQR)) |
+      (ir['watchers'] > (Q3 + 1.5 * IQR)))
+]
+ir_cleaned
 
-Step 7: Z-Score Method
-data = [1,12,15,18,21,24,27,30,33,36,39,42,45,48,51, 54,57,60,63,66,69,72,75,78,81,84,87,90,93] df2_z = pd.DataFrame(data, columns=['values']) df2_z
+### Step 7: Z-Score Method
+data = [1,12,15,18,21,24,27,30,33,36,39,42,45,48,51,
+        54,57,60,63,66,69,72,75,78,81,84,87,90,93]
+df2_z = pd.DataFrame(data, columns=['values'])
+df2_z
 
-Calculate Z-Scores
-z_scores = np.abs(stats.zscore(df2_z)) z_scores
+### Calculate Z-Scores
+z_scores = np.abs(stats.zscore(df2_z))
+z_scores
 
-Detect Outliers
-threshold = 3 outliers_z = df2_z[z_scores > threshold] print("Outliers:") outliers_z
+### Detect Outliers
+threshold = 3
+outliers_z = df2_z[z_scores > threshold]
+print("Outliers:")
+outliers_z
 
-Remove Outliers
-df2_z_cleaned = df2_z[z_scores <= threshold] df2_z_cleaned 
+### Remove Outliers
+df2_z_cleaned = df2_z[z_scores <= threshold]
+df2_z_cleaned
+
 # Result
 
  Thus , the data cleaning process is completed successfully.
